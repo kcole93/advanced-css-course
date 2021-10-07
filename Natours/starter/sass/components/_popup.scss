@@ -4,38 +4,42 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba($color-black, .85);
+    background-color: rgba($color-black, 0.85);
     z-index: 3000;
     opacity: 0;
     visibility: hidden;
-    transition: all .3s;
+    transition: all 0.3s;
+
+    @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+        background-color: rgba($color-black, 0.35);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
 
     &__content {
         @include absCenter;
         width: 75%;
         background-color: $color-white;
         border-radius: 3px;
-        box-shadow: 0 2rem 4rem rgba($color-black, .2);
+        box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
         z-index: 3500;
         display: table;
         overflow: hiddden;
         opacity: 0;
-        transform: translate(-50%, -50%) scale(.25);
-        transition: all .4s .2s;
+        transform: translate(-50%, -50%) scale(0.25);
+        transition: all 0.4s 0.2s;
     }
 
     &__left {
         width: 33.3333333333%;
         display: table-cell;
-
     }
 
-    &__right{
+    &__right {
         width: 66.66666666666%;
         display: table-cell;
         vertical-align: middle;
         padding: 3rem 5rem;
-   
     }
 
     &__img {
@@ -52,7 +56,7 @@
         -moz-column-count: 2;
         -moz-column-gap: 4rem;
         -moz-column-rule: 1px solid $color-gray-light-2;
-        
+
         hyphens: auto;
         -moz-hyphens: auto;
         -ms-hyphens: auto;
@@ -79,7 +83,7 @@
             font-size: 3rem;
             text-decoration: none;
             display: inline-block;
-            transition: all .2s;
+            transition: all 0.2s;
             line-height: 1;
 
             &:hover {
@@ -89,7 +93,7 @@
     }
 
     //Reconfig component for mobile
-    
+
     @include respond(tab-port) {
         height: 100%;
         &__content {
@@ -114,8 +118,5 @@
             -moz-column-count: 1;
             column-count: 1;
         }
-
     }
-
 }
-
